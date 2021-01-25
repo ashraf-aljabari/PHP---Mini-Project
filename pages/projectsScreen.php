@@ -28,9 +28,26 @@ include '../data.php';
         </thead>
         <tbody>
         <?php
+        $studentCount = 0;
+        $completedProjects = 0 ;
         foreach ($data as $value){
-            $checkingTime = round((strtotime($value['attendance'][0]['check_out']) - strtotime($value['attendance'][0]['check_in']))/3600,1 );
-            $checkingTime2 = round((strtotime($value['attendance'][1]['check_out']) - strtotime($value['attendance'][1]['check_in']))/3600,1 );
+            $studentCount ++;
+            if($value['projects'][0]['is_completed'] ==  "yes"){
+                $completedProjects ++;
+            }
+            if($value['projects'][1]['is_completed'] ==  "yes"){
+                $completedProjects ++;
+            }
+        }
+        $studentProject = $studentCount * 2;
+        echo "<h2 style='text-align: center'>Number of Student: $studentCount</h2>";
+
+        echo "<h3 style='text-align: center'>Number of projects: $studentProject</h3>";
+
+        echo "<h3 style='text-align: center'>Number of completed projects: $completedProjects</h3>";
+
+        foreach ($data as $value){
+
 
             echo "<tr>
                      <th scope='row'>".$value['id']."</th>

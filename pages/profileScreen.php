@@ -15,10 +15,13 @@
 <body>
 <?php
 include '../components/navBar.html';
+include '../data.php';
 ?>
 <div class="container-fluid justify-content-center align-items-center">
+
+
 <?php
-include '../data.php';
+
    $id = $_GET["id"];
    $userData = array();
    foreach ($data as $value){
